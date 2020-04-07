@@ -83,6 +83,18 @@ jobs:
       - test:
           php-image: << parameters.php-image >>
       - storing-test-results
+  php-windows:
+    machine:
+      image: "windows-server-2019-vs2019:stable"
+      resource_class: windows.medium
+      shell: bash
+    environment:
+      DOCKER_NET_DRIVER: nat
+      INFLUXDB_VERSION: 1.7
+    steps:
+      - checkout
+      - run: make
+      - run: choco install php
 
 workflows:
   version: 2
@@ -99,6 +111,8 @@ workflows:
       - tests-php:
           name: php-7.1
           php-image: "circleci/php:7.1"
+      - tests-windows:
+          name: php-windows
 
   nightly:
     triggers:
