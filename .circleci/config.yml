@@ -99,7 +99,7 @@ jobs:
       - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - run: php composer-setup.php
       - run: php composer.phar install
-      - run: vendor\bin\phpunit --filter "QueryApiTest|WriteApiTest|PointTest" --log-junit build/junit.xml
+      - run: vendor\bin\phpunit --exclude-group "integration" --log-junit build\junit.xml
       - storing-test-results
 
 workflows:
