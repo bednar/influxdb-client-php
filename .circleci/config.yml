@@ -101,6 +101,7 @@ jobs:
       - run: |
           export PATH=/c/tools/php/:$PATH
           ./vendor/bin/phpunit --exclude-group "integration" --log-junit build/junit.xml
+      - storing-test-results
 
 workflows:
   version: 2
