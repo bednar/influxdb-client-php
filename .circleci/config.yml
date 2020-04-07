@@ -93,14 +93,14 @@ jobs:
       INFLUXDB_VERSION: 1.7
     steps:
       - checkout
-      - run: choco install make
       - run: choco install php --version=7.3.15 --params '"/ThreadSafe /InstallDir:c:\tools\php"'
       - run: refreshenv
       - run: copy .circleci\php.ini c:\tools\php
       - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - run: php composer-setup.php
       - run: php composer.phar install
-      - run: vendor\bin\phpunit --filter "QueryApiTest|WriteApiTest|PointTest"
+      - run: vendor\bin\phpunit --filter "QueryApiTest|WriteApiTest|PointTest" --log-junit build/junit.xml
+      - storing-test-results
 
 workflows:
   version: 2
