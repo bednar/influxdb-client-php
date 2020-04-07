@@ -96,6 +96,7 @@ jobs:
       - run: choco install make
       - run: choco install php
       - run: choco install composer
+      - run: refreshenv
       - run: make
       - run: composer validate
 
