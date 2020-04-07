@@ -98,8 +98,9 @@ jobs:
       - run: /c/tools/php/php.exe -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - run: /c/tools/php/php.exe composer-setup.php
       - run: /c/tools/php/php.exe composer.phar install
-      - run: export PATH=/c/tools/php/:$PATH
-      - run: ./vendor/bin/phpunit --exclude-group "integration" --log-junit build/junit.xml
+      - run: |
+          export PATH=/c/tools/php/:$PATH
+          ./vendor/bin/phpunit --exclude-group "integration" --log-junit build/junit.xml
 
 workflows:
   version: 2
