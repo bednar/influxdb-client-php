@@ -95,12 +95,12 @@ jobs:
       - checkout
       - run: choco install make
       - run: choco install php --version=7.3.15 --params '"/ThreadSafe /InstallDir:c:\tools\php"'
-#      - run: /c/tools/php/php.exe -i
       - run: cp ~/project/.circleci/php.ini /c/tools/php/
       - run: /c/tools/php/php.exe -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - run: /c/tools/php/php.exe composer-setup.php
-#      - run: make
       - run: /c/tools/php/php.exe composer.phar install
+      - run: export PATH=/c/tools/php/:$PATH
+      - run: ./vendor/bin/phpunit --filter "QueryApiTest|WriteApiTest|PointTest"
 
 workflows:
   version: 2
