@@ -87,18 +87,17 @@ jobs:
     machine:
       image: "windows-server-2019-vs2019:stable"
       resource_class: windows.medium
-      shell: cmd.exe
+      shell: bash
     environment:
       DOCKER_NET_DRIVER: nat
       INFLUXDB_VERSION: 1.7
     steps:
       - checkout
       - run: choco install make
-      - run: choco install php
-      - run: choco install composer
-      - run: refreshenv
+      - run: choco install php --package-parameters='/ThreadSafe ""/InstallDir:C:\tools\php"""'
+      - run: choco install composer --ia '"/PHP=C:\tools\php"'
       - run: make
-      - run: composer validate
+      - run: ls -la /c/tools
 
 workflows:
   version: 2
