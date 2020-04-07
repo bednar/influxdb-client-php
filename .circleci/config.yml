@@ -96,7 +96,7 @@ jobs:
       - run: choco install make
       - run: choco install php
       - run: choco install composer
-      - run: source ~/.bash_profile
+      - run: source ~/.bashrc
       - run: make
       - run: composer validate
 
