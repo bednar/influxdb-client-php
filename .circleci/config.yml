@@ -93,6 +93,7 @@ jobs:
       INFLUXDB_VERSION: 1.7
     steps:
       - checkout
+      - run: choco install php
       - run: make
       - run: choco install php
 
