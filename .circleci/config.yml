@@ -87,7 +87,7 @@ jobs:
     machine:
       image: "windows-server-2019-vs2019:stable"
       resource_class: windows.medium
-      shell: bash
+      shell: cmd.exe
     environment:
       DOCKER_NET_DRIVER: nat
       INFLUXDB_VERSION: 1.7
@@ -96,7 +96,7 @@ jobs:
       - run: choco install make
       - run: choco install php
       - run: choco install composer
-      - run: source ~/.bashrc
+      - run: refreshenv
       - run: make
       - run: composer validate
 
