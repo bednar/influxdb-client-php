@@ -100,7 +100,7 @@ jobs:
       - run: /c/tools/php/php.exe -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - run: /c/tools/php/php.exe composer-setup.php
       - run: make
-      - run: /c/tools/php/php.exe composer.phar validate
+      - run: /c/tools/php/php.exe composer.phar install
 
 workflows:
   version: 2
