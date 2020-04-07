@@ -95,12 +95,12 @@ jobs:
       - checkout
       - run: choco install make
       - run: choco install php --params '"/ThreadSafe /InstallDir:c:\tools\php"'
-      - run: export PATH=/c/tools/php/:$PATH
-      - run: php -i
-      - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-      - run: php composer-setup.php
+      - run: /c/tools/php/php.exe -i
+      - run: cp ~/project/.circleci/php.ini /c/tools/php/
+      - run: /c/tools/php/php.exe -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+      - run: /c/tools/php/php.exe composer-setup.php
       - run: make
-      - run: php composer.phar validate
+      - run: /c/tools/php/php.exe composer.phar validate
 
 workflows:
   version: 2
